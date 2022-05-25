@@ -1,3 +1,5 @@
+let library = [];
+
 function Book(title, author, numOfPages, haveRead){
   this.title = title,
   this.author = author,
@@ -12,3 +14,9 @@ function Book(title, author, numOfPages, haveRead){
 const theHobbit = new Book("The Hobbit", "JRR Tolk", 57, true);
 
 console.log(theHobbit.info());
+
+function addBookToLibrary() {
+  let book = prompt("What book title would you like to add?")
+  library.push(book);
+}
+
