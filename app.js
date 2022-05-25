@@ -16,7 +16,7 @@ function Book(title, author, numOfPages, haveRead){
 console.log(theHobbit.info());
 
 function addBookToLibrary() {
-  const newBook = new Book("Undefined", "Undefined", 0, false);
+  
   let bookTitle = prompt("What book title would you like to add?");
   let bookAuthor = prompt("What is the books author?");
   let bookLength = prompt("What is the length of the book?");
@@ -26,12 +26,7 @@ function addBookToLibrary() {
   } else {
     haveIReadIt = false;
   }
-
-
-  newBook.title = bookTitle;
-  newBook.author = bookAuthor;
-  newBook.numOfPages = bookLength;
-  newBook.haveRead = haveIReadIt;
+  const newBook = new Book(bookTitle, bookAuthor, bookLength, haveIReadIt);
   
   console.log(newBook.info());
   library.push(newBook);
