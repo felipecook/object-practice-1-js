@@ -1,0 +1,9 @@
+.body__container {
+  display: flex;
+}
+
+.book {
+  border: solid;
+  width: 200px;
+  text-align: center;
+}
