@@ -30,5 +30,11 @@ function addBookToLibrary() {
   
   console.log(newBook.info());
   library.push(newBook);
+  console.log(library);
 }
 
+
+
+function displayLibrary () {
+  
+}
