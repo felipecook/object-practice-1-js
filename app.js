@@ -1,4 +1,4 @@
-const body = document.querySelector("body__container");
+
 
 
 
@@ -17,7 +17,7 @@ function Book(title, author, numOfPages, haveRead){
 
 //const theHobbit = new Book("The Hobbit", "JRR Tolk", 57, true);
 
-console.log(theHobbit.info());
+// console.log(theHobbit.info());
 
 function addBookToLibrary() {
   
@@ -40,12 +40,13 @@ function addBookToLibrary() {
 
 
 function displayLibrary () {
+  const body = document.querySelector("#body");
 
   for (let index = 0; index < library.length; index++) {
     const element = library[index];
 
     let individualBook = document.createElement('div');
-    individualBook.classList.add(book);
+    individualBook.classList.add('book');
     body.appendChild(individualBook);
     let bookTitle = document.createElement('h4');
     bookTitle.innerHTML = element.bookTitle;
