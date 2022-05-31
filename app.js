@@ -43,19 +43,19 @@ function displayLibrary () {
   const body = document.querySelector("#body");
 
   for (let index = 0; index < library.length; index++) {
-    const element = library[index];
+    let element = library[index];
 
     let individualBook = document.createElement('div');
     individualBook.classList.add('book');
     body.appendChild(individualBook);
     let bookTitle = document.createElement('h4');
-    bookTitle.innerHTML = element.bookTitle;
+    bookTitle.innerHTML = element.title;
     let bookAuthor = document.createElement('h5');
-    bookAuthor.innerHTML = element.bookAuthor;
+    bookAuthor.innerHTML = element.author;
     let bookLength = document.createElement('h6');
-    bookLength.innerHTML = "Pages : " + element.bookLength;
+    bookLength.innerHTML = "Pages : " + element.numOfPages;
     let haveIReadIt = document.createElement('h6');
-    haveIReadIt.innerHTML = "Have I read this : " + element.haveIReadIt;
+    haveIReadIt.innerHTML = "Have I read this : " + element.haveRead;
     individualBook.appendChild(bookTitle);
     individualBook.appendChild(bookAuthor);
     individualBook.appendChild(bookLength);

@@ -1,9 +1,19 @@
+.header__container {
+  text-align: center;
+  border-bottom: solid 2px;
+  margin: 15px;
+}
+
+
 .body__container {
   display: flex;
+  gap: 20px;
+  
 }
 
 .book {
   border: solid;
   width: 200px;
   text-align: center;
+  
 }
