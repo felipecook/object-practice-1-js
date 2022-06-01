@@ -1,10 +1,8 @@
 
-
-
-
 let library = [];
-const addBookToLibraryButton = document.createElement('button');
-const mainBody = document.querySelector('.body__container');
+const addBookToLibraryButton = document.querySelector('#addBookButton');
+
+mainBody.appendChild(addBookToLibraryButton);
 console.log(mainBody);
 console.log(addBookToLibraryButton);
 function Book(title, author, numOfPages, haveRead){
@@ -61,3 +59,7 @@ function displayLibrary () {
     
   }
 }
+
+addBookToLibraryButton.addEventListener('click', () => {
+
+})
