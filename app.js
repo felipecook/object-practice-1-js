@@ -14,12 +14,13 @@ function Book(title, author, numOfPages, haveRead){
 }
 
 
-function addBookToLibrary() {
+function addBookToLibrary(bookTitle, bookAuthor, bookLength, haveIReadIt) {
   
-  let bookTitle = prompt("What book title would you like to add?");
-  let bookAuthor = prompt("What is the books author?");
-  let bookLength = prompt("What is the length of the book?");
-  let haveIReadIt = prompt("Have you read this book? True or False?");
+  // let bookTitle = prompt("What book title would you like to add?");
+  // let bookAuthor = prompt("What is the books author?");
+  // let bookLength = prompt("What is the length of the book?");
+  // let haveIReadIt = prompt("Have you read this book? True or False?");
+
   if(haveIReadIt == "True"){
     haveIReadIt = true;
   } else {
@@ -64,16 +65,20 @@ function openNewBookForm() {
   
   
   let submitNewBookButton = document.createElement('button');
-  let newBookInput = document.createElement('input');
-  newBookInput.setAttribute('type', 'text');
-  newBookInput.setAttribute('id', 'title');
+  let newBookTitleInput = document.createElement('input');
+  newBookTitleInput.setAttribute('type', 'text');
+  newBookTitleInput.setAttribute('id', 'title');
 
-  let newBookLabel = document.createElement('label');
-  newBookLabel.setAttribute('for', 'title');
-  newBookLabel.innerHTML = 'What is the book title?';
+  let newBookTitleLabel = document.createElement('label');
+  newBookTitleLabel.setAttribute('for', 'title');
+  newBookTitleLabel.innerHTML = 'What is the book title?';
+
   
-  newBookSubmissionDiv.appendChild(newBookLabel);
-  newBookSubmissionDiv.appendChild(newBookInput);
+  
+  newBookSubmissionDiv.appendChild(newBookTitleLabel);
+  newBookSubmissionDiv.appendChild(newBookTitleInput);
   newBookSubmissionDiv.appendChild(submitNewBookButton);
-  
+  submitNewBookButton.addEventListener('click', addBookToLibrary(newBookTitleInput.value, "undefined", "undefined", "undefined"))
+
+
 }
