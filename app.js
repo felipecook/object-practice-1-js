@@ -1,9 +1,7 @@
 
 let library = [];
 const addBookToLibraryButton = document.querySelector('#addBookButton');
-
-mainBody.appendChild(addBookToLibraryButton);
-console.log(mainBody);
+const newBookSubmissionDiv = document.querySelector('.newBookSubmission');
 console.log(addBookToLibraryButton);
 function Book(title, author, numOfPages, haveRead){
   this.title = title,
@@ -60,6 +58,22 @@ function displayLibrary () {
   }
 }
 
-addBookToLibraryButton.addEventListener('click', () => {
+addBookToLibraryButton.addEventListener('click', openNewBookForm);
 
-})
+function openNewBookForm() {
+  
+  
+  let submitNewBookButton = document.createElement('button');
+  let newBookInput = document.createElement('input');
+  newBookInput.setAttribute('type', 'text');
+  newBookInput.setAttribute('id', 'title');
+
+  let newBookLabel = document.createElement('label');
+  newBookLabel.setAttribute('for', 'title');
+  newBookLabel.innerHTML = 'What is the book title?';
+  
+  newBookSubmissionDiv.appendChild(newBookLabel);
+  newBookSubmissionDiv.appendChild(newBookInput);
+  newBookSubmissionDiv.appendChild(submitNewBookButton);
+  
+}
