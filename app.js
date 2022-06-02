@@ -1,5 +1,6 @@
 
 let library = [];
+let libraryIndex = 0;
 const libraryContainer = document.querySelector('.body__container');
 const addBookToLibraryButton = document.querySelector('#addBookButton');
 const newBookSubmissionDiv = document.querySelector('.newBookSubmission');
@@ -71,8 +72,8 @@ function addBookToLibraryButtonClicked() {
 
 function displayLibrary() {
 
-  for (let index = 0; index < library.length; index++) {
-    let element = library[index];
+  for (libraryIndex; libraryIndex < library.length; libraryIndex++) {
+    let element = library[libraryIndex];
 
     let individualBook = document.createElement('div');
     individualBook.classList.add('book');
