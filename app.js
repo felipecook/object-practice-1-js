@@ -4,12 +4,32 @@ const libraryContainer = document.querySelector('.body__container');
 const addBookToLibraryButton = document.querySelector('#addBookButton');
 const newBookSubmissionDiv = document.querySelector('.newBookSubmission');
 const submitNewBookButton = document.createElement('button');
+submitNewBookButton.innerHTML = "Click me to add to library";
+
+// Book Title input and label
 const newBookTitleInput = document.createElement('input');
 const newBookTitleLabel = document.createElement('label');
 newBookTitleInput.setAttribute('type', 'text');
 newBookTitleInput.setAttribute('id', 'title');
 newBookTitleLabel.setAttribute('for', 'title');
-newBookTitleLabel.innerHTML = 'What is the book title?';
+newBookTitleLabel.innerHTML = 'What is the book\'s title?';
+
+// Book Author input and label
+const newBookAuthorInput = document.createElement('input');
+const newBookAuthorLabel = document.createElement('label');
+newBookAuthorInput.setAttribute('type', 'text');
+newBookAuthorInput.setAttribute('id', 'author');
+newBookAuthorLabel.setAttribute('for', 'author');
+newBookAuthorLabel.innerHTML = 'What is the book\'s author?';
+
+// Book Num of Pages input and label
+const newBookNumOfPagesInput = document.createElement('input');
+const newBookNumOfPagesLabel = document.createElement('label');
+newBookNumOfPagesInput.setAttribute('type', 'text');
+newBookNumOfPagesInput.setAttribute('id', 'numOfPages');
+newBookNumOfPagesLabel.setAttribute('for', 'numOfPages');
+newBookNumOfPagesLabel.innerHTML = 'What is the book\'s Number of Pages?';
+
 submitNewBookButton.addEventListener('click', addBookToLibraryButtonClicked);
 console.log(addBookToLibraryButton);
 function Book(title, author, numOfPages, haveRead) {
@@ -43,7 +63,8 @@ function addBookToLibrary(bookTitle, bookAuthor, bookLength, haveIReadIt) {
 }
 
 function addBookToLibraryButtonClicked() {
-  addBookToLibrary(newBookTitleInput.value);
+  addBookToLibrary(newBookTitleInput.value, newBookAuthorInput.value, newBookNumOfPagesInput.value);
+  displayLibrary()
 }
 
 
@@ -79,6 +100,10 @@ function openNewBookForm() {
 
   newBookSubmissionDiv.appendChild(newBookTitleLabel);
   newBookSubmissionDiv.appendChild(newBookTitleInput);
+  newBookSubmissionDiv.appendChild(newBookAuthorLabel);
+  newBookSubmissionDiv.appendChild(newBookAuthorInput);
+  newBookSubmissionDiv.appendChild(newBookNumOfPagesLabel);
+  newBookSubmissionDiv.appendChild(newBookNumOfPagesInput);
   newBookSubmissionDiv.appendChild(submitNewBookButton);
 
 
