@@ -80,7 +80,8 @@ function displayLibrary() {
     let deleteBookButton = document.createElement('button');
     deleteBookButton.addEventListener('click', removeBookFromLibrary);
     deleteBookButton.innerHTML = 'Delete Book';
-    let individualBook = document.createElement('div');
+    let individualBook = document.createElement('div'); 
+    individualBook.id = `div${bookId}`;
     deleteBookButton.id = `${bookId}`;
     individualBook.classList.add('book');
     libraryContainer.appendChild(individualBook);
@@ -122,6 +123,17 @@ function removeBookFromLibrary() {
     const element = library[index];
     if (element.id == this.id) {
       library.splice(element, 1);
+      let id = this.id;
+      let divToDelete = document.querySelector(`#div${id}`);
+      divToDelete.parentNode.removeChild(divToDelete);
+      //removeAllChildNodes(divToDelete);
+
     }
   }
 }
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+} 
