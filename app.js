@@ -1,6 +1,7 @@
 
 let library = [];
 let libraryIndex = 0;
+let bookId = 0;
 const libraryContainer = document.querySelector('.body__container');
 const addBookToLibraryButton = document.querySelector('#addBookButton');
 const newBookSubmissionDiv = document.querySelector('.newBookSubmission');
@@ -33,18 +34,19 @@ newBookNumOfPagesLabel.innerHTML = 'What is the book\'s Number of Pages?';
 
 submitNewBookButton.addEventListener('click', addBookToLibraryButtonClicked);
 console.log(addBookToLibraryButton);
-function Book(title, author, numOfPages, haveRead) {
+function Book(title, author, numOfPages, haveRead, id) {
   this.title = title,
-    this.author = author,
-    this.numOfPages = numOfPages,
-    this.haveRead = haveRead
+  this.author = author,
+  this.numOfPages = numOfPages,
+  this.haveRead = haveRead
+  this.id = id;
   this.info = function () {
     return `This book has ${numOfPages} pages, the title is ${title}, the author is ${author}, and it has been read: ${haveRead}.`;
   }
 }
 
 
-function addBookToLibrary(bookTitle, bookAuthor, bookLength, haveIReadIt) {
+function addBookToLibrary(bookTitle, bookAuthor, bookLength, haveIReadIt, id) {
 
   // let bookTitle = prompt("What book title would you like to add?");
   // let bookAuthor = prompt("What is the books author?");
@@ -56,7 +58,7 @@ function addBookToLibrary(bookTitle, bookAuthor, bookLength, haveIReadIt) {
   } else {
     haveIReadIt = false;
   }
-  const newBook = new Book(bookTitle, bookAuthor, bookLength, haveIReadIt);
+  const newBook = new Book(bookTitle, bookAuthor, bookLength, haveIReadIt, id);
 
   console.log(newBook.info());
   library.push(newBook);
@@ -64,7 +66,7 @@ function addBookToLibrary(bookTitle, bookAuthor, bookLength, haveIReadIt) {
 }
 
 function addBookToLibraryButtonClicked() {
-  addBookToLibrary(newBookTitleInput.value, newBookAuthorInput.value, newBookNumOfPagesInput.value);
+  addBookToLibrary(newBookTitleInput.value, newBookAuthorInput.value, newBookNumOfPagesInput.value, 'False', bookId);
   displayLibrary()
 }
 
@@ -75,7 +77,11 @@ function displayLibrary() {
   for (libraryIndex; libraryIndex < library.length; libraryIndex++) {
     let element = library[libraryIndex];
 
+    let deleteBookButton = document.createElement('button');
+    deleteBookButton.addEventListener('click', removeBookFromLibrary);
+    deleteBookButton.innerHTML = 'Delete Book';
     let individualBook = document.createElement('div');
+    deleteBookButton.id = `${bookId}`;
     individualBook.classList.add('book');
     libraryContainer.appendChild(individualBook);
     let bookTitle = document.createElement('h4');
@@ -90,7 +96,8 @@ function displayLibrary() {
     individualBook.appendChild(bookAuthor);
     individualBook.appendChild(bookLength);
     individualBook.appendChild(haveIReadIt);
-
+    individualBook.appendChild(deleteBookButton);
+    bookId++;
   }
 }
 
@@ -108,4 +115,13 @@ function openNewBookForm() {
   newBookSubmissionDiv.appendChild(submitNewBookButton);
 
 
+}
+
+function removeBookFromLibrary() {
+  for (let index = 0; index < library.length; index++) {
+    const element = library[index];
+    if (element.id == this.id) {
+      library.splice(element, 1);
+    }
+  }
 }
