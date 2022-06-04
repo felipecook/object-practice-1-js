@@ -46,12 +46,18 @@ function Book(title, author, numOfPages, haveRead, id) {
 }
 
 
+Book.prototype.changeReadStatus = function () {
+  if (this.haveRead == false) {
+    this.haveRead = true;
+  } else {
+    this.haveRead = false;
+  }
+  
+}
+
 function addBookToLibrary(bookTitle, bookAuthor, bookLength, haveIReadIt, id) {
 
-  // let bookTitle = prompt("What book title would you like to add?");
-  // let bookAuthor = prompt("What is the books author?");
-  // let bookLength = prompt("What is the length of the book?");
-  // let haveIReadIt = prompt("Have you read this book? True or False?");
+
 
   if (haveIReadIt == "True") {
     haveIReadIt = true;
