@@ -32,16 +32,50 @@ newBookNumOfPagesInput.setAttribute('id', 'numOfPages');
 newBookNumOfPagesLabel.setAttribute('for', 'numOfPages');
 newBookNumOfPagesLabel.innerHTML = 'What is the book\'s Number of Pages?';
 
+//add new book button
+const changeBookReadStatusButton = document.createElement('button');
+changeBookReadStatusButton.addEventListener('click', changeThisBooksReadStatus);
+
 submitNewBookButton.addEventListener('click', addBookToLibraryButtonClicked);
 console.log(addBookToLibraryButton);
 function Book(title, author, numOfPages, haveRead, id) {
   this.title = title,
-  this.author = author,
-  this.numOfPages = numOfPages,
-  this.haveRead = haveRead
+    this.author = author,
+    this.numOfPages = numOfPages,
+    this.haveRead = haveRead
   this.id = id;
   this.info = function () {
     return `This book has ${numOfPages} pages, the title is ${title}, the author is ${author}, and it has been read: ${haveRead}.`;
+  }
+}
+
+function changeThisBooksReadStatus() {
+  for (let index = 0; index < library.length; index++) {
+    const element = library[index];
+    if (element.id == this.id - 1) {
+      let id = this.id - 1;
+      let divToChange = document.querySelector(`#div${id}`);
+
+      for (let j = 0; j < divToChange.children.length; j++) {
+        const elementj = divToChange.children[j];
+        if (elementj.id == `readit${id}`) {
+          if (elementj.innerHTML == "Have I read this : false") {
+            elementj.innerHTML = "Have I read this : true";
+          } else {
+            elementj.innerHTML = "Have I read this : false";
+          }
+        }
+
+      }
+
+
+
+      element.changeReadStatus;
+
+
+
+
+    }
   }
 }
 
@@ -52,7 +86,8 @@ Book.prototype.changeReadStatus = function () {
   } else {
     this.haveRead = false;
   }
-  
+
+
 }
 
 function addBookToLibrary(bookTitle, bookAuthor, bookLength, haveIReadIt, id) {
@@ -86,7 +121,7 @@ function displayLibrary() {
     let deleteBookButton = document.createElement('button');
     deleteBookButton.addEventListener('click', removeBookFromLibrary);
     deleteBookButton.innerHTML = 'Delete Book';
-    let individualBook = document.createElement('div'); 
+    let individualBook = document.createElement('div');
     individualBook.id = `div${bookId}`;
     deleteBookButton.id = `${bookId}`;
     individualBook.classList.add('book');
@@ -98,12 +133,16 @@ function displayLibrary() {
     let bookLength = document.createElement('h6');
     bookLength.innerHTML = "Pages : " + element.numOfPages;
     let haveIReadIt = document.createElement('h6');
+    haveIReadIt.id = `readit${bookId}`;
     haveIReadIt.innerHTML = "Have I read this : " + element.haveRead;
     individualBook.appendChild(bookTitle);
     individualBook.appendChild(bookAuthor);
     individualBook.appendChild(bookLength);
     individualBook.appendChild(haveIReadIt);
     individualBook.appendChild(deleteBookButton);
+    changeBookReadStatusButton.id = `${bookId + 1}`;
+    changeBookReadStatusButton.innerHTML = 'Change book read status';
+    individualBook.appendChild(changeBookReadStatusButton);
     bookId++;
   }
 }
@@ -132,14 +171,11 @@ function removeBookFromLibrary() {
       let id = this.id;
       let divToDelete = document.querySelector(`#div${id}`);
       divToDelete.parentNode.removeChild(divToDelete);
-      //removeAllChildNodes(divToDelete);
+
 
     }
   }
 }
 
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
-  }
-} 
+
+
